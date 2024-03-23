@@ -1,1 +1,1 @@
-# Snake Game
+# TicTacToe Game
