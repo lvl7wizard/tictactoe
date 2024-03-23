@@ -29,7 +29,7 @@ function Grid({
       moveLog[0] === moveLog[1] &&
       moveLog[0] === moveLog[2]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
@@ -37,7 +37,7 @@ function Grid({
       moveLog[3] === moveLog[4] &&
       moveLog[3] === moveLog[5]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
@@ -45,7 +45,7 @@ function Grid({
       moveLog[6] === moveLog[7] &&
       moveLog[6] === moveLog[8]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
       // check verticals
@@ -54,7 +54,7 @@ function Grid({
       moveLog[0] === moveLog[3] &&
       moveLog[0] === moveLog[6]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
@@ -62,7 +62,7 @@ function Grid({
       moveLog[1] === moveLog[4] &&
       moveLog[1] === moveLog[7]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
@@ -70,7 +70,7 @@ function Grid({
       moveLog[2] === moveLog[5] &&
       moveLog[2] === moveLog[8]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
       // check diagonals
@@ -79,7 +79,7 @@ function Grid({
       moveLog[0] === moveLog[4] &&
       moveLog[0] === moveLog[8]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
@@ -87,7 +87,7 @@ function Grid({
       moveLog[2] === moveLog[4] &&
       moveLog[2] === moveLog[6]
     ) {
-      setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
       addPoint(!playerOne ? "playerOne" : "playerTwo")
       // check if it's a draw
@@ -96,7 +96,7 @@ function Grid({
         return move !== "";
       })
     ) {
-      setUserFeedback("it's a draw");
+      setUserFeedback("it's a draw!");
       setGameOver(true);
     }
   };
@@ -112,7 +112,7 @@ function Grid({
         setUserFeedback("");
       } else {
         setUserFeedback(
-          "someone's already in this square. try a different one."
+          "invalid move - someone is already in this square"
         );
       }
     }
