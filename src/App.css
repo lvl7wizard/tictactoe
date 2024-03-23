@@ -2,6 +2,12 @@ body {
   background: #004e98;
 }
 
+.game-title {
+  color: #e9e9e9;
+  text-align: center;
+  font-size:300%;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -84,10 +90,5 @@ table tr td:last-child {
 .game-wrapper {
   display: flex;
   justify-content: center;
-  height: 100vh;
-  /* approx center relative position used so that conditionally rendered elements 
-  don't move the board from the center*/
-  position: relative;
-  top: calc(50vh - 215px);
   color: #e9e9e9;
 }
