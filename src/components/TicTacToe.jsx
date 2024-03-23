@@ -9,18 +9,17 @@ function TicTacToe() {
   const [userFeedback, setUserFeedback] = useState("");
   const [moveLog, setMoveLog] = useState(["", "", "", "", "", "", "", "", ""]);
   const [gameOver, setGameOver] = useState(false);
-  const [score, setScore] = useState({playerOne: 0, playerTwo: 0})
+  const [score, setScore] = useState({ playerOne: 0, playerTwo: 0 });
 
   const resetGame = () => {
     setMoveLog(["", "", "", "", "", "", "", "", ""]);
     setUserFeedback("");
     setGameOver(false);
-    setPlayerOne(true);
   };
 
   return (
-    <>
-    <Scores score={score}/>
+    <div className="game-container">
+      <Scores score={score} />
       <Grid
         playerOne={playerOne}
         setPlayerOne={setPlayerOne}
@@ -31,16 +30,16 @@ function TicTacToe() {
         setGameOver={setGameOver}
         setScore={setScore}
       />
-    <PlayerTurnIndicator playerOne={playerOne} gameOver={gameOver}/>
+      <PlayerTurnIndicator playerOne={playerOne} gameOver={gameOver} />
       <UserFeedback userFeedback={userFeedback} />
-      {gameOver ?
-      <div className="button-container">
-        <button onClick={resetGame} className="reset-button">
-          Rematch
-        </button>
-      </div>
-      : null}
-    </>
+      {gameOver ? (
+        <div className="button-container">
+          <button onClick={resetGame} className="reset-button">
+            new game
+          </button>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
