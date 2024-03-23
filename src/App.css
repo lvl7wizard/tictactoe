@@ -64,10 +64,13 @@ table tr td:last-child {
 }
 
 .reset-button {
+  border-style: solid;
+  border-width: 1.5px;
+  border-color:#e9e9e9;
   border-radius: 20px;
-  background-color: #ff7f00;
+  background-color: transparent;
+  font-family: 'Courier New', Courier, monospace;
   color: white;
-  border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -75,7 +78,7 @@ table tr td:last-child {
 }
 
 .reset-button:hover {
-  background-color: #ff5e00;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .game-wrapper {
