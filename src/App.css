@@ -37,6 +37,10 @@ table tr td:last-child {
     text-align: center;
 }
 
+.player-turn-indicator {
+    text-align: center;
+}
+
 .button-container {
     display: flex;
     justify-content: center;

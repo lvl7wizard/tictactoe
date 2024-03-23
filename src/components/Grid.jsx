@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 function Grid({
   playerOne,
@@ -8,70 +8,95 @@ function Grid({
   setMoveLog,
   gameOver,
   setGameOver,
+  setScore,
 }) {
   useEffect(() => {
     checkWinningConditions();
-  }, [moveLog]);
+  }, [moveLog])
+
+  const addPoint = (player) => {
+    setScore((currentScore) => {
+      const newScore = {...currentScore}
+      newScore[player] += 1
+      return newScore
+    } )
+  }
 
   const checkWinningConditions = () => {
     // check horizontals
     if (
-      moveLog[0] !== undefined &&
+      moveLog[0] !== "" &&
       moveLog[0] === moveLog[1] &&
       moveLog[0] === moveLog[2]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
-      moveLog[3] !== undefined &&
+      moveLog[3] !== "" &&
       moveLog[3] === moveLog[4] &&
       moveLog[3] === moveLog[5]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
-      moveLog[6] !== undefined &&
+      moveLog[6] !== "" &&
       moveLog[6] === moveLog[7] &&
       moveLog[6] === moveLog[8]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
       // check verticals
     } else if (
-      moveLog[0] !== undefined &&
+      moveLog[0] !== "" &&
       moveLog[0] === moveLog[3] &&
       moveLog[0] === moveLog[6]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
-      moveLog[1] !== undefined &&
+      moveLog[1] !== "" &&
       moveLog[1] === moveLog[4] &&
       moveLog[1] === moveLog[7]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
-      moveLog[2] !== undefined &&
+      moveLog[2] !== "" &&
       moveLog[2] === moveLog[5] &&
       moveLog[2] === moveLog[8]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
       // check diagonals
     } else if (
-      moveLog[0] !== undefined &&
+      moveLog[0] !== "" &&
       moveLog[0] === moveLog[4] &&
       moveLog[0] === moveLog[8]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
       setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
     } else if (
-      moveLog[2] !== undefined &&
+      moveLog[2] !== "" &&
       moveLog[2] === moveLog[4] &&
       moveLog[2] === moveLog[6]
     ) {
       setUserFeedback(!playerOne ? "player one wins" : "player two wins");
+      setGameOver(true);
+      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      // check if it's a draw
+    } else if (
+      moveLog.every((move) => {
+        return move !== "";
+      })
+    ) {
+      setUserFeedback("it's a draw");
       setGameOver(true);
     }
   };
@@ -87,7 +112,7 @@ function Grid({
         setUserFeedback("");
       } else {
         setUserFeedback(
-          "Someone's already in this square. Try a different one."
+          "someone's already in this square. try a different one."
         );
       }
     }
