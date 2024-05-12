@@ -5,11 +5,11 @@ import PlayerTurnIndicator from "./PlayerTurnIndicator";
 import Scores from "./Scores";
 
 function TicTacToe() {
-  const [playerOne, setPlayerOne] = useState(true);
-  const [userFeedback, setUserFeedback] = useState("");
-  const [moveLog, setMoveLog] = useState(["", "", "", "", "", "", "", "", ""]);
-  const [gameOver, setGameOver] = useState(false);
-  const [score, setScore] = useState({ playerOne: 0, playerTwo: 0 });
+  const [playerOne, setPlayerOne] = useState<boolean>(true);
+  const [userFeedback, setUserFeedback] = useState<string>("");
+  const [moveLog, setMoveLog] = useState<("X" | "O" | "")[]>(["", "", "", "", "", "", "", "", ""]);
+  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [score, setScore] = useState<{playerOne: number, playerTwo: number}>({ playerOne: 0, playerTwo: 0 });
 
   const resetGame = () => {
     setMoveLog(["", "", "", "", "", "", "", "", ""]);
