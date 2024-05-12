@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-Welcome to my Tic Tac Toe game built with JavaScript and React. This classic game is designed for 2 players to engage in the timeless (and seemingly endless) battle between naughts and crosses.
+Welcome to my Tic Tac Toe game built with TypeScript and React. This classic game is designed for 2 players to engage in the timeless (and seemingly endless) battle between naughts and crosses.
 
 ## Features
 - 2-Player Mode: Compete against a friend in real-time.
