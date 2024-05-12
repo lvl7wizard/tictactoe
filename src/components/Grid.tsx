@@ -1,4 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, MouseEvent} from "react";
+
+interface GridProps {
+  playerOne: boolean;
+  setPlayerOne: React.Dispatch<React.SetStateAction<boolean>>;
+  setUserFeedback: React.Dispatch<React.SetStateAction<string>>,
+  moveLog: ("X" | "O" | "")[],
+  setMoveLog: React.Dispatch<React.SetStateAction<object>>
+  gameOver: boolean,
+  setGameOver: React.Dispatch<React.SetStateAction<boolean>>;
+  setScore: React.Dispatch<React.SetStateAction<{ playerOne: number; playerTwo: number }>>
+}
 
 function Grid({
   playerOne,
@@ -9,13 +20,13 @@ function Grid({
   gameOver,
   setGameOver,
   setScore,
-}) {
+}: GridProps) {
   useEffect(() => {
     checkWinningConditions();
   }, [moveLog])
 
-  const addPoint = (player) => {
-    setScore((currentScore) => {
+  const addPoint = (player: "playerOne" | "playerTwo") => {
+    setScore((currentScore: { playerOne: number; playerTwo: number }) => {
       const newScore = {...currentScore}
       newScore[player] += 1
       return newScore
@@ -101,11 +112,11 @@ function Grid({
     }
   };
 
-  const onClickHandler = (event) => {
-    const cellIndex = event.target.id;
+  const onClickHandler = (event: MouseEvent<HTMLTableCellElement>) => {
+    const cellIndex = parseInt(event.currentTarget.id);
     const newMoveLog = [...moveLog];
     if (!gameOver) {
-      if (event.target.innerText === "") {
+      if (event.currentTarget.innerText === "") {
         newMoveLog[cellIndex] = playerOne ? "X" : "O";
         setPlayerOne(!playerOne);
         setMoveLog(newMoveLog);
