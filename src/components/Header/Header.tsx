@@ -11,9 +11,6 @@ const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   background-color: #1a2639;
-  color: #d9dad7;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   height: 50.5px;
 `;
 
