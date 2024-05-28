@@ -10,15 +10,16 @@ const NewGameContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
+  justify-content: center;
+  min-width: fit-content;
+  height: fit-content;
   background-color: #1a2639;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #d9dad7;
   padding-bottom: 16px;
   text-align: center;
   padding: 16px;
   margin: 0 auto;
   border-radius: 20px;
+  box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.3),  inset 0px 0px 5px 0px rgba(255, 255, 255, 0.2);
 
   p {
     margin: 0;
