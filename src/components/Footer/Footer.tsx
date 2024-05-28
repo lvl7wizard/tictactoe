@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import githubIcon from '../../assets/githubIcon.png';
 
 const StyledFooter = styled.footer`
     background-color: #1a2639;
@@ -24,7 +25,7 @@ const StyledIcon = styled.img`
 const Footer = () => {
     return <StyledFooter>
         <StyledLink href="https://github.com/lvl7wizard" target="_blank">
-          <StyledIcon src={'src/assets/githubIcon.png'}/> lvl7wizard
+          <StyledIcon src={githubIcon}/> lvl7wizard
         </StyledLink>
     </StyledFooter>
 }
