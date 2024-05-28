@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-interface NewGameProps {
+interface ResultsProps {
+  usernames: {playerOne: string, playerTwo: string}
   userFeedback: string;
   resetGame: () => void;
 }
@@ -38,16 +39,16 @@ const StyledButton = styled.button`
     }
 `
 
-function NewGame({ userFeedback, resetGame }: NewGameProps) {
+function Results({ usernames, userFeedback, resetGame }: ResultsProps) {
   return (
     <NewGameContainer>
-      {userFeedback === "player one wins!" ? <p style={{color: "#00a6a6", fontSize: "100px"}}>X</p> : null}
-      {userFeedback === "player two wins!" ? <p style={{color: "#c24d2c", fontSize: "100px"}}>O</p> : null}
+      {userFeedback === `${usernames.playerOne} wins!` ? <p style={{color: "#00a6a6", fontSize: "100px"}}>X</p> : null}
+      {userFeedback === `${usernames.playerTwo} wins!` ? <p style={{color: "#c24d2c", fontSize: "100px"}}>O</p> : null}
       {userFeedback === "it's a draw!" ? <div style={{display: "flex", gap: "5px"}}><p style={{color: "#00a6a6", fontSize: "100px"}}>X</p><p style={{color: "#c24d2c", fontSize: "100px"}}>O</p></div> : null}
-      <p className="user-feedback">{userFeedback}</p>
+      <p>{userFeedback}</p>
       <StyledButton onClick={resetGame}>play again</StyledButton>
     </NewGameContainer>
   );
 }
 
-export default NewGame;
+export default Results;
