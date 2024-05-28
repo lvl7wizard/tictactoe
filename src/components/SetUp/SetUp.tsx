@@ -14,11 +14,11 @@ const UsernameForm = styled.form`
   align-items: center;
   width: fit-content;
   margin: 0 auto;
-  color: #d9dad7;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   background-color: #1a2639;
   padding: 16px;
+  border: solid 1px;
+  box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.3),  inset 0px 0px 5px 0px rgba(255, 255, 255, 0.2);
+
   border-radius: 20px;
   gap: 10px;
   p {
@@ -35,10 +35,9 @@ const UsernameForm = styled.form`
 
 const StyledSubmit = styled.input`
   background-color: rgba(255, 255, 255, 0.1);
-  border: #d9dad7 solid;
+  border: solid 1px;
   border-radius: 20px;
   padding: 15px;
-  color: #d9dad7;
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transition: background-color 0.3s ease;
@@ -49,7 +48,7 @@ const StyledSubmit = styled.input`
 const FeedbackText = styled.p`
   color: #c24d2c;
   font-size: 0.75rem;
-`
+`;
 
 const SetUp = ({ usernames, setUsernames }: SetUpProps) => {
   const [formIssues, setFormIssues] = useState({
@@ -60,7 +59,7 @@ const SetUp = ({ usernames, setUsernames }: SetUpProps) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormIssues({playerOne: false, playerTwo: false, feedback: ""})
+    setFormIssues({ playerOne: false, playerTwo: false, feedback: "" });
     setUsernames((prevUsernames) => ({
       ...prevUsernames,
       [name]: value,
@@ -99,14 +98,21 @@ const SetUp = ({ usernames, setUsernames }: SetUpProps) => {
           type="text"
           name="playerOne"
           onChange={handleChange}
-          style={{border: formIssues.playerOne ? "#c24d2c solid" : "none"}}
+          style={{ border: formIssues.playerOne ? "#c24d2c solid" : "none" }}
         />
       </label>
       <label>
         Player <span style={{ color: "#c24d2c" }}>O</span>:{" "}
-        <input type="text" name="playerTwo" onChange={handleChange} style={{border: formIssues.playerTwo ? "#c24d2c solid" : "none"}}/>
+        <input
+          type="text"
+          name="playerTwo"
+          onChange={handleChange}
+          style={{ border: formIssues.playerTwo ? "#c24d2c solid" : "none" }}
+        />
       </label>
-      {formIssues.feedback !== "" ? <FeedbackText>Error: {formIssues.feedback}</FeedbackText> : null}
+      {formIssues.feedback !== "" ? (
+        <FeedbackText>Error: {formIssues.feedback}</FeedbackText>
+      ) : null}
       <StyledSubmit type="submit" name="submit" />
     </UsernameForm>
   );
