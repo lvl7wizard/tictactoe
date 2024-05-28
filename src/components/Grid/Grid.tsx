@@ -31,8 +31,7 @@ const StyledTable = styled.table`
     font-weight: 600;
     vertical-align: center;
     text-align: center;
-    border: #d9dad7 solid 3px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: #d9dad7 solid 3px; // border colour must be set or it will be overriden by text colour
 
     @media (min-width: 720px) {
       height: 180px;
@@ -65,7 +64,7 @@ const StyledTable = styled.table`
 `;
 
 const StyledCell = styled.td<{ content: "X" | "O" | "" }>`
-  color: ${({ content }) => (content === "X" ? "#00a6a6" : content === "O" ? "#c24d2c" : "white")};
+  color: ${({ content }) => (content === "X" ? "#00a6a6" : content === "O" ? "#c24d2c" : null)};
 `;
 
 function Grid({
