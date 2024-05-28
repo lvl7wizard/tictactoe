@@ -1,15 +1,71 @@
-import { useEffect, MouseEvent} from "react";
+import { useEffect, MouseEvent } from "react";
+import styled from "styled-components";
 
 interface GridProps {
   playerOne: boolean;
   setPlayerOne: React.Dispatch<React.SetStateAction<boolean>>;
-  setUserFeedback: React.Dispatch<React.SetStateAction<string>>,
-  moveLog: ("X" | "O" | "")[],
-  setMoveLog: React.Dispatch<React.SetStateAction<object>>
-  gameOver: boolean,
+  setUserFeedback: React.Dispatch<React.SetStateAction<string>>;
+  moveLog: ("X" | "O" | "")[];
+  setMoveLog: React.Dispatch<React.SetStateAction<object>>;
+  gameOver: boolean;
   setGameOver: React.Dispatch<React.SetStateAction<boolean>>;
-  setScore: React.Dispatch<React.SetStateAction<{ playerOne: number; playerTwo: number }>>
+  setScore: React.Dispatch<
+    React.SetStateAction<{ playerOne: number; playerTwo: number }>
+  >;
 }
+
+const TableContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const StyledTable = styled.table`
+  border-collapse: collapse;
+
+  td {
+    height: 25vw;
+    width: 25vw;
+    border: solid;
+    font-size: 15vw;
+    font-weight: 600;
+    vertical-align: center;
+    text-align: center;
+    border: #d9dad7 solid 3px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    @media (min-width: 720px) {
+      height: 180px;
+      width: 180px;
+      font-size: 108px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  tr:first-child td {
+    border-top: 0;
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+`;
+
+const StyledCell = styled.td<{ content: "X" | "O" | "" }>`
+  color: ${({ content }) => (content === "X" ? "#00a6a6" : content === "O" ? "#c24d2c" : "white")};
+`;
 
 function Grid({
   playerOne,
@@ -23,15 +79,15 @@ function Grid({
 }: GridProps) {
   useEffect(() => {
     checkWinningConditions();
-  }, [moveLog])
+  }, [moveLog]);
 
   const addPoint = (player: "playerOne" | "playerTwo") => {
     setScore((currentScore: { playerOne: number; playerTwo: number }) => {
-      const newScore = {...currentScore}
-      newScore[player] += 1
-      return newScore
-    } )
-  }
+      const newScore = { ...currentScore };
+      newScore[player] += 1;
+      return newScore;
+    });
+  };
 
   const checkWinningConditions = () => {
     // check horizontals
@@ -42,7 +98,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
     } else if (
       moveLog[3] !== "" &&
       moveLog[3] === moveLog[4] &&
@@ -50,7 +106,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
     } else if (
       moveLog[6] !== "" &&
       moveLog[6] === moveLog[7] &&
@@ -58,7 +114,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
       // check verticals
     } else if (
       moveLog[0] !== "" &&
@@ -67,7 +123,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
     } else if (
       moveLog[1] !== "" &&
       moveLog[1] === moveLog[4] &&
@@ -75,7 +131,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
     } else if (
       moveLog[2] !== "" &&
       moveLog[2] === moveLog[5] &&
@@ -83,7 +139,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
       // check diagonals
     } else if (
       moveLog[0] !== "" &&
@@ -92,7 +148,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
     } else if (
       moveLog[2] !== "" &&
       moveLog[2] === moveLog[4] &&
@@ -100,7 +156,7 @@ function Grid({
     ) {
       setUserFeedback(!playerOne ? "player one wins!" : "player two wins!");
       setGameOver(true);
-      addPoint(!playerOne ? "playerOne" : "playerTwo")
+      addPoint(!playerOne ? "playerOne" : "playerTwo");
       // check if it's a draw
     } else if (
       moveLog.every((move) => {
@@ -122,51 +178,51 @@ function Grid({
         setMoveLog(newMoveLog);
         setUserFeedback("");
       } else {
-        setUserFeedback(
-          "invalid move - someone is already in this square"
-        );
+        setUserFeedback("invalid move - someone is already in this square");
       }
     }
   };
 
   return (
-    <table>
+    <TableContainer>
+    <StyledTable>
       <tbody>
         <tr>
-          <td id="0" onClick={onClickHandler}>
+          <StyledCell id="0" content={moveLog[0]} onClick={onClickHandler}>
             {moveLog[0]}
-          </td>
-          <td id="1" onClick={onClickHandler}>
+          </StyledCell>
+          <StyledCell id="1" content={moveLog[1]} onClick={onClickHandler}>
             {moveLog[1]}
-          </td>
-          <td id="2" onClick={onClickHandler}>
+          </StyledCell>
+          <StyledCell id="2" content={moveLog[2]} onClick={onClickHandler}>
             {moveLog[2]}
-          </td>
+          </StyledCell>
         </tr>
         <tr>
-          <td id="3" onClick={onClickHandler}>
+          <StyledCell id="3" content={moveLog[3]} onClick={onClickHandler}>
             {moveLog[3]}
-          </td>
-          <td id="4" onClick={onClickHandler}>
+          </StyledCell>
+          <StyledCell id="4" content={moveLog[4]} onClick={onClickHandler}>
             {moveLog[4]}
-          </td>
-          <td id="5" onClick={onClickHandler}>
+          </StyledCell>
+          <StyledCell id="5" content={moveLog[5]} onClick={onClickHandler}>
             {moveLog[5]}
-          </td>
+          </StyledCell>
         </tr>
         <tr>
-          <td id="6" onClick={onClickHandler}>
+          <StyledCell id="6" content={moveLog[6]} onClick={onClickHandler}>
             {moveLog[6]}
-          </td>
-          <td id="7" onClick={onClickHandler}>
+          </StyledCell>
+          <StyledCell id="7" content={moveLog[7]} onClick={onClickHandler}>
             {moveLog[7]}
-          </td>
-          <td id="8" onClick={onClickHandler}>
+          </StyledCell>
+          <StyledCell id="8" content={moveLog[8]} onClick={onClickHandler}>
             {moveLog[8]}
-          </td>
+          </StyledCell>
         </tr>
       </tbody>
-    </table>
+    </StyledTable>
+  </TableContainer>
   );
 }
 
