@@ -3,8 +3,6 @@ import githubIcon from '../../assets/githubIcon.png';
 
 const StyledFooter = styled.footer`
     background-color: #1a2639;
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-left: 5vw;
     padding-right: 5vw;
     display: flex;
